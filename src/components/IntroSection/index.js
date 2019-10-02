@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 
 class IntroSection extends Component {
     state = {
@@ -16,7 +17,7 @@ class IntroSection extends Component {
                 <input type='text' name='user' placeholder='Your name' />
                 <button type='submit'>Submit</button>
                 <br/>
-                <Link class="link" >Or, just jump right in...</Link>
+                <Link class="link" to={ROUTES.DECISIONS_LIST}>Or, just jump right in...</Link>
             </div>
         )
     }

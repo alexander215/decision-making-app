@@ -1,2 +1,2 @@
 export const LANDING_PAGE = '/';
-export const DECISIONS_PAGE = '/decisions';
+export const DECISIONS_LIST = '/decisions';
