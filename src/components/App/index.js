@@ -1,10 +1,12 @@
 import React from 'react';
 import './style.css';
+import IntroSection from '../IntroSection';
+
 
 function App() {
   return (
-    <div className="App">
-      This is the app.
+    <div>
+      <IntroSection />
     </div>
   );
 }
