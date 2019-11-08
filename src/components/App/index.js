@@ -5,6 +5,7 @@ import IntroSection from '../IntroSection';
 import DecisionList from '../DecisionList';
 import RandomNumber from '../RandomNumber';
 import * as ROUTES from '../../constants/routes';
+import RockPaperScissors from '../RockPaperScissors';
 
 
 const Error404Message = () => {
@@ -22,6 +23,7 @@ function App() {
         <Route exact path={ROUTES.LANDING_PAGE} component={IntroSection} />
         <Route exact path={ROUTES.DECISIONS_LIST} component={DecisionList} />
         <Route exact path={ROUTES.RANDOM_NUMBER} component={RandomNumber} />
+        <Route exact path={ROUTES.ROCK_PAPER_SCISSORS} component={RockPaperScissors} />
 
         <Route component={ Error404Message } />
       </Switch>

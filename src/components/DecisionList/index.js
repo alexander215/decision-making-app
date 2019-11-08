@@ -13,6 +13,7 @@ class DecisionList extends Component {
             <div>
                 This is the decision list.
                 <li><Link to={ROUTES.RANDOM_NUMBER}>Random Number</Link></li>
+                <li><Link to={ROUTES.ROCK_PAPER_SCISSORS}>Rock, Paper, Scissors</Link></li>
 
 
             </div>
