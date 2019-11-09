@@ -24,3 +24,7 @@
 html {
   text-align: center;
 }
+
+.selected {
+  text-decoration: underline;
+}
