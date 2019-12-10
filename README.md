@@ -16,6 +16,7 @@ It's still a work in progress, but this app will let you:
 - Input a list that will be output in a random order
 - Use a random number generator
 - Input a list, randomly choose one thing
+- Generate a random password (not secure!)
 
 and more...
 
