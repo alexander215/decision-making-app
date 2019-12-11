@@ -1,14 +1,48 @@
 import React, { useState } from 'react';
+import { async } from 'q';
 
 const RockPaperScissors = () => {
     const [currentChoice, setCurrentChoice] = useState('Rock');
     const [opponentChoice, setOpponentChoice] = useState('?');
+    const [winnerStatus, setWinnerStatus] = useState('');
     
-    const playRockPaperScissors = () => {
+    const calculateWinner = (opponentsDecision) => {
+        console.log(winnerStatus, "<-winnerStatus");
+
+        // 1 way to tie
+        // 3 ways to win
+        // else lose
+        if (currentChoice === opponentsDecision) {
+            return setWinnerStatus(`${currentChoice} vs. ${opponentsDecision}: It's a tie!`);
+        } else if ((currentChoice === 'Rock') && (opponentsDecision === 'Paper')) {
+            return setWinnerStatus(`Uh oh, ${opponentsDecision} beats ${currentChoice}. You lose...`);
+        } else if ((currentChoice === 'Paper') && (opponentsDecision === 'Scissors')) {
+            return setWinnerStatus(`Uh oh, ${opponentsDecision} beats ${currentChoice}. You lose...`);
+        } else if ((currentChoice === 'Scissors') && (opponentsDecision === 'Rock')) {
+            return setWinnerStatus(`Uh oh, ${opponentsDecision} beats ${currentChoice}. You lose...`);
+        } else {
+            return setWinnerStatus(`Yippee! ${currentChoice} beats ${opponentsDecision}. You win!`);
+        }
+        
+        
+
+        // if (winnerStatus === null)
+
+    }
+
+    const opponentDecision = () => {
         let choices = ['Rock', 'Paper', 'Scissors'];
         let opponentPlay = choices[Math.floor(Math.random() * Math.floor(3))];
-        console.log(opponentPlay);
         setOpponentChoice(opponentPlay);
+        return opponentPlay;
+    }
+    
+    const playRockPaperScissors = async (e) => {
+        e.preventDefault();
+        let opponentsDecision = opponentDecision();
+        console.log(opponentsDecision, "<-opponentsdecision")
+        setWinnerStatus("Calculating...");
+        calculateWinner(opponentsDecision);
 
     };
 
@@ -30,12 +64,14 @@ const RockPaperScissors = () => {
                 Scissors.
             </div>
             {/* <button type='submit' onClick={console.log('Clicked')}>Rock, Paper, Scissors!</button> */}
-            <button onClick={e => playRockPaperScissors()}>Rock, Paper, Scissors!</button>
+            <button onClick={e => playRockPaperScissors(e)}>Rock, Paper, Scissors!</button>
 
             <h2>The Results:</h2>
             Your choice is: {currentChoice}
             <br/>
             Your opponent's choice is: {opponentChoice}
+            <br/>
+            {winnerStatus}
             
 
         </div>
