@@ -6,6 +6,7 @@ import DecisionList from '../DecisionList';
 import RandomNumber from '../RandomNumber';
 import * as ROUTES from '../../constants/routes';
 import RockPaperScissors from '../RockPaperScissors';
+import FlipACoin from '../FlipACoin';
 
 
 const Error404Message = () => {
@@ -24,6 +25,7 @@ function App() {
         <Route exact path={ROUTES.DECISIONS_LIST} component={DecisionList} />
         <Route exact path={ROUTES.RANDOM_NUMBER} component={RandomNumber} />
         <Route exact path={ROUTES.ROCK_PAPER_SCISSORS} component={RockPaperScissors} />
+        <Route exact path={ROUTES.FLIP_A_COIN} component={FlipACoin}/>
 
         <Route component={ Error404Message } />
       </Switch>
