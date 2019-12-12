@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 const FlipACoin = () => {
     const [currentChoice, setCurrentChoice] = useState('Heads');
     const [flipResult, setFlipResult] = useState('?');
-    const [decisionResult, setDecisionResult] = useState('');
+    const [preferredDecision, setPreferredDecision] = useState('');
+    const [otherDecision, setOtherDecision] = useState('');
 
     // This will decide the result of the coin flip: heads or tails
     const coinDecision = () => {
@@ -21,7 +22,8 @@ const FlipACoin = () => {
     const flipTheCoin = () => {
         let flippedCoin = coinDecision();
         console.log(flippedCoin,'<- in flip the coin')
-        console.log(decisionResult,'<-decisionresult')
+        console.log(preferredDecision,'<-preferredDecision')
+        console.log(otherDecision,'<-otherDecision')
     }
 
     return (
@@ -34,7 +36,11 @@ const FlipACoin = () => {
             <div>
                 Your desired result. In other words, if the coin agrees, you will:
                 <br/>
-                <input type='text' name='decision' placeholder='Enter result' onChange={e => setDecisionResult(e.target.value)}></input>
+                <input type='text' name='desired-decision' placeholder='Enter result' onChange={e => setPreferredDecision(e.target.value)}></input>
+                <br/>
+                The other result. If the coin doesn't agree, you will:
+                <br/>
+                <input type='text' name='other-decision' placeholder='Enter result' onChange={e => setOtherDecision(e.target.value)}></input>
             </div>
 
             <div>(Click choice to toggle.)</div>
