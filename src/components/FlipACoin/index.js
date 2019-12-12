@@ -5,6 +5,7 @@ const FlipACoin = () => {
     const [flipResult, setFlipResult] = useState('?');
     const [preferredDecision, setPreferredDecision] = useState('');
     const [otherDecision, setOtherDecision] = useState('');
+    const [resultStatus, setResultStatus] = useState('');
 
     // This will decide the result of the coin flip: heads or tails
     const coinDecision = () => {
@@ -15,15 +16,21 @@ const FlipACoin = () => {
         return sideFlipped;
     }
 
-    const flipWinner = () => {
-        // if 
+    const flipWinner = (flipWinner) => {
+        if (flipWinner === currentChoice) {
+            setResultStatus(`Yes!!!! You should ${preferredDecision}.`)
+        } else {
+            setResultStatus(`No!!! You should ${otherDecision}`)
+        }
     }
 
     const flipTheCoin = () => {
-        let flippedCoin = coinDecision();
-        console.log(flippedCoin,'<- in flip the coin')
-        console.log(preferredDecision,'<-preferredDecision')
-        console.log(otherDecision,'<-otherDecision')
+        if ((preferredDecision === '') || (otherDecision === '')) {
+            setResultStatus('Please set the requirements.');
+        } else {
+            let flippedCoin = coinDecision();
+            flipWinner(flippedCoin);
+        }
     }
 
     return (
@@ -51,6 +58,8 @@ const FlipACoin = () => {
             Your choice is: {currentChoice}
             <br/>
             The result is: {flipResult}
+            <br/>
+            {resultStatus}
         </div>
     )
 }
