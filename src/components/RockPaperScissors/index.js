@@ -6,12 +6,8 @@ const RockPaperScissors = () => {
     const [opponentChoice, setOpponentChoice] = useState('?');
     const [winnerStatus, setWinnerStatus] = useState('');
     
+    // The win logic. It gets called from playRockPaperScissors().
     const calculateWinner = (opponentsDecision) => {
-        console.log(winnerStatus, "<-winnerStatus");
-
-        // 1 way to tie
-        // 3 ways to win
-        // else lose
         if (currentChoice === opponentsDecision) {
             return setWinnerStatus(`${currentChoice} vs. ${opponentsDecision}: It's a tie!`);
         } else if ((currentChoice === 'Rock') && (opponentsDecision === 'Paper')) {
@@ -23,13 +19,9 @@ const RockPaperScissors = () => {
         } else {
             return setWinnerStatus(`Yippee! ${currentChoice} beats ${opponentsDecision}. You win!`);
         }
-        
-        
-
-        // if (winnerStatus === null)
-
     }
 
+    // This is the opponents choice. It gets called from playRockPaperScissors().
     const opponentDecision = () => {
         let choices = ['Rock', 'Paper', 'Scissors'];
         let opponentPlay = choices[Math.floor(Math.random() * Math.floor(3))];
@@ -37,10 +29,10 @@ const RockPaperScissors = () => {
         return opponentPlay;
     }
     
-    const playRockPaperScissors = async (e) => {
-        e.preventDefault();
+    // This is the game play. It gets activated when the play button is clicked.
+    const playRockPaperScissors = (e) => {
+        // e.preventDefault();
         let opponentsDecision = opponentDecision();
-        console.log(opponentsDecision, "<-opponentsdecision")
         setWinnerStatus("Calculating...");
         calculateWinner(opponentsDecision);
 
@@ -50,9 +42,10 @@ const RockPaperScissors = () => {
         <div>
             <h1>Rock, Paper, Scissors</h1>
             The rules are as old as time, but unless you've been living under, well, paper:
-            Rock breaks scissors, scissors cut paper, paper covers rock. It's a vicious circle.
+            Rock breaks scissors, scissors cut paper, and paper covers rock. It's a vicious circle.
             No one knows why a rock gives up when it's covered by a piece of paper, but that's neither here nor there.
             <hr/>
+            <div>(Click choice to toggle)</div>
             <div value='Rock' className={(currentChoice === 'Rock') ? 'selected' : ''} onClick={e => setCurrentChoice('Rock')}>
 
                 Rock.
@@ -63,7 +56,6 @@ const RockPaperScissors = () => {
             <div value='Rock' className={(currentChoice === 'Scissors') ? 'selected' : ''} onClick={e => setCurrentChoice('Scissors')}>
                 Scissors.
             </div>
-            {/* <button type='submit' onClick={console.log('Clicked')}>Rock, Paper, Scissors!</button> */}
             <button onClick={e => playRockPaperScissors(e)}>Rock, Paper, Scissors!</button>
 
             <h2>The Results:</h2>
