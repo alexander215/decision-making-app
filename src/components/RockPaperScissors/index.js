@@ -50,10 +50,10 @@ const RockPaperScissors = () => {
 
                 Rock.
             </div>
-            <div value='Rock' className={(currentChoice === 'Paper') ? 'selected' : ''} onClick={e => setCurrentChoice('Paper')}>
+            <div value='Paper' className={(currentChoice === 'Paper') ? 'selected' : ''} onClick={e => setCurrentChoice('Paper')}>
                 Paper.
             </div>
-            <div value='Rock' className={(currentChoice === 'Scissors') ? 'selected' : ''} onClick={e => setCurrentChoice('Scissors')}>
+            <div value='Scissors' className={(currentChoice === 'Scissors') ? 'selected' : ''} onClick={e => setCurrentChoice('Scissors')}>
                 Scissors.
             </div>
             <button onClick={e => playRockPaperScissors(e)}>Rock, Paper, Scissors!</button>
