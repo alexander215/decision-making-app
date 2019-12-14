@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const FlipACoin = () => {
     const [currentChoice, setCurrentChoice] = useState('Heads');
+    // This is whether the coin flip resulted in heads or tails.
     const [flipResult, setFlipResult] = useState('?');
     const [preferredDecision, setPreferredDecision] = useState('');
     const [otherDecision, setOtherDecision] = useState('');
