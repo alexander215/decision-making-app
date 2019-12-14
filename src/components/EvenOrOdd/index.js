@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const EvenOrOdd = () => {
+    // test comment for commit
     const [currentChoice, setCurrentChoice] = useState('Even');
     const [number, setCurrentNumber] = useState('');
     const [result, setResult] = useState('');
