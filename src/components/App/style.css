@@ -29,3 +29,11 @@ html {
   text-decoration: underline;
   text-transform: uppercase;
 }
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}
