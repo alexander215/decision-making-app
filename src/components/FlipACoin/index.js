@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 
 const FlipACoin = () => {
+    // This is whether the user has selected heads or tails.
     const [currentChoice, setCurrentChoice] = useState('Heads');
     // This is whether the coin flip resulted in heads or tails.
     const [flipResult, setFlipResult] = useState('?');
+    // This is the outcome if the user guessed the flip result correctly.
     const [preferredDecision, setPreferredDecision] = useState('');
+    // This is the outcome if the user guessed the flip result incorrectly.
     const [otherDecision, setOtherDecision] = useState('');
+    // This is informing the user of what they have to do, based on the outcome.
     const [resultStatus, setResultStatus] = useState('');
+    // This sets whether the flip has occurred. This makes the selection criteria OR the results visible.
     const [flipStatus, setFlipStatus] = useState('notFlipped');
+    // This will inform the user that they have to fill selection criteria before they can flip.
+    const [criteriaStatus, setCriteriaStatus] = useState('');
 
     // This will decide the result of the coin flip: heads or tails
     const coinDecision = () => {
@@ -18,6 +25,7 @@ const FlipACoin = () => {
         return sideFlipped;
     }
 
+    // This calculates whether the user won the flip, an sends the message about when they need to do.
     const flipWinner = (flipWinner) => {
         if (flipWinner === currentChoice) {
             setResultStatus(`Yes!!!! You should ${preferredDecision}.`)
@@ -26,9 +34,10 @@ const FlipACoin = () => {
         }
     }
 
+    // This is the coin flip.
     const flipTheCoin = () => {
         if ((preferredDecision === '') || (otherDecision === '')) {
-            setResultStatus('Please set the requirements.');
+            setCriteriaStatus('Please set the requirements.');
         } else {
             let flippedCoin = coinDecision();
             flipWinner(flippedCoin);
@@ -36,8 +45,11 @@ const FlipACoin = () => {
         }
     }
 
-    const resetTheGame = () => {
+    // This will reset the game if the user would like to flip a second time.
+    const resetTheGame = (e) => {
         setFlipStatus('notFlipped');
+        setPreferredDecision('')
+        setOtherDecision('');
     }
 
     return (
@@ -53,17 +65,19 @@ const FlipACoin = () => {
                 <div>
                     Your desired result. In other words, if the coin agrees, you will:
                     <br/>
-                    <input type='text' name='desired-decision' placeholder='Enter result' onChange={e => setPreferredDecision(e.target.value)}></input>
+                    <input type='text' name='desired-decision' value={preferredDecision} placeholder='Enter result' onChange={e => setPreferredDecision(e.target.value)}></input>
                     <br/>
                     The other result. If the coin doesn't agree, you will:
                     <br/>
-                    <input type='text' name='other-decision' placeholder='Enter result' onChange={e => setOtherDecision(e.target.value)}></input>
+                    <input type='text' name='other-decision' value={otherDecision} placeholder='Enter result' onChange={e => setOtherDecision(e.target.value)}></input>
                 </div>
 
                 <div>(Click choice to toggle.)</div>
                 <div value='Heads' className={(currentChoice === 'Heads') ? 'selected' : ''} onClick={e => setCurrentChoice('Heads')}>Heads</div>
                 <div value='Tails' className={(currentChoice === 'Tails') ? 'selected' : ''} onClick={e => setCurrentChoice('Tails')}>Tails</div>
                 <button onClick={e => flipTheCoin()}>Flip the coin!</button>
+                <br/>
+                {criteriaStatus}
             </div>
 
             {/* This is the result. This will be hidden until the coin is flipped. */}
@@ -74,6 +88,7 @@ const FlipACoin = () => {
                 The result is: {flipResult}
                 <br/>
                 {resultStatus}
+                <br/>
                 <button onClick={e => resetTheGame()}>Set up another flip.</button>
             </div>
 
