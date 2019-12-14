@@ -7,6 +7,7 @@ import RandomNumber from '../RandomNumber';
 import * as ROUTES from '../../constants/routes';
 import RockPaperScissors from '../RockPaperScissors';
 import FlipACoin from '../FlipACoin';
+import EvenOrOdd from '../EvenOrOdd';
 
 
 const Error404Message = () => {
@@ -17,6 +18,7 @@ const Error404Message = () => {
     </div>
   )
 }
+
 function App() {
   return (
     <div>
@@ -26,6 +28,7 @@ function App() {
         <Route exact path={ROUTES.RANDOM_NUMBER} component={RandomNumber} />
         <Route exact path={ROUTES.ROCK_PAPER_SCISSORS} component={RockPaperScissors} />
         <Route exact path={ROUTES.FLIP_A_COIN} component={FlipACoin}/>
+        <Route exact path={ROUTES.EVEN_OR_ODD} component={EvenOrOdd} />
 
         <Route component={ Error404Message } />
       </Switch>
