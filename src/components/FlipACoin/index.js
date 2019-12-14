@@ -59,9 +59,6 @@ const FlipACoin = () => {
                     <input type='text' name='other-decision' placeholder='Enter result' onChange={e => setOtherDecision(e.target.value)}></input>
                 </div>
 
-                {/* className={(props.circleSelected == number) ? 'selected' : ''} */}
-                {/* visibility: visible; */}
-
                 <div>(Click choice to toggle.)</div>
                 <div value='Heads' className={(currentChoice === 'Heads') ? 'selected' : ''} onClick={e => setCurrentChoice('Heads')}>Heads</div>
                 <div value='Tails' className={(currentChoice === 'Tails') ? 'selected' : ''} onClick={e => setCurrentChoice('Tails')}>Tails</div>

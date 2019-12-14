@@ -18,6 +18,7 @@ const Error404Message = () => {
     </div>
   )
 }
+
 function App() {
   return (
     <div>
