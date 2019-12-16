@@ -128,22 +128,27 @@ import React, { useState } from 'react';
 const FlipACoin = () => {
     const [ coinChoices, setCoinChoices ] = useState({
         currentChoice: 'Heads',
-        flipResult: '?'
+        flipResult: '?',
+        preferredDecision: '',
+        otherDecision: '',
+        resultStatus: '',
+        flipStatus: 'notFlipped',
+        criteriaStatus: ''
     })
     // // This is whether the user has selected heads or tails.
     // const [currentChoice, setCurrentChoice] = useState('Heads');
     // // This is whether the coin flip resulted in heads or tails.
     // const [flipResult, setFlipResult] = useState('?');
-    // This is the outcome if the user guessed the flip result correctly.
-    const [preferredDecision, setPreferredDecision] = useState('');
+    // // This is the outcome if the user guessed the flip result correctly.
+    // const [preferredDecision, setPreferredDecision] = useState('');
     // This is the outcome if the user guessed the flip result incorrectly.
-    const [otherDecision, setOtherDecision] = useState('');
+    // const [otherDecision, setOtherDecision] = useState('');
     // This is informing the user of what they have to do, based on the outcome.
-    const [resultStatus, setResultStatus] = useState('');
+    // const [resultStatus, setResultStatus] = useState('');
     // This sets whether the flip has occurred. This makes the selection criteria OR the results visible.
-    const [flipStatus, setFlipStatus] = useState('notFlipped');
+    // const [flipStatus, setFlipStatus] = useState('notFlipped');
     // This will inform the user that they have to fill selection criteria before they can flip.
-    const [criteriaStatus, setCriteriaStatus] = useState('');
+    // const [criteriaStatus, setCriteriaStatus] = useState('');
 
     // This will decide the result of the coin flip: heads or tails
     const coinDecision = () => {
@@ -158,28 +163,28 @@ const FlipACoin = () => {
     // This calculates whether the user won the flip, an sends the message about when they need to do.
     const flipWinner = (flipWinner) => {
         if (flipWinner === coinChoices.currentChoice) {
-            setResultStatus(`Yes!!!! You should ${preferredDecision}.`)
+            setCoinChoices({resultStatus: `Yes!!!! You should ${coinChoices.preferredDecision}.`})
         } else {
-            setResultStatus(`No!!! You should ${otherDecision}`)
+            setCoinChoices({resultStatus: `No!!! You should ${coinChoices.otherDecision}`})
         }
     }
 
     // This is the coin flip.
     const flipTheCoin = () => {
-        if ((preferredDecision === '') || (otherDecision === '')) {
-            setCriteriaStatus('Please set the requirements.');
+        if ((coinChoices.preferredDecision === '') || (coinChoices.otherDecision === '')) {
+            setCoinChoices({criteriaStatus: 'Please set the requirements.'})
         } else {
             let flippedCoin = coinDecision();
             flipWinner(flippedCoin);
-            setFlipStatus('flipped')
+            setCoinChoices({flipStatus: 'flipped'});
         }
     }
-
+    
     // This will reset the game if the user would like to flip a second time.
     const resetTheGame = (e) => {
-        setFlipStatus('notFlipped');
-        setPreferredDecision('')
-        setOtherDecision('');
+        setCoinChoices({flipStatus: 'notFlipped'});
+        setCoinChoices({preferredDecision: ''});
+        setCoinChoices({otherDecision: ''});
     }
 
     return (
@@ -191,15 +196,15 @@ const FlipACoin = () => {
             <hr/>
 
             {/* This is the selection criteria. It will be hidden once the coin is flipped, until a new game is started. */}
-            <div className={(flipStatus === 'notFlipped') ? 'visible' : 'hidden'} >
+            <div className={(coinChoices.flipStatus === 'notFlipped') ? 'visible' : 'hidden'} >
                 <div>
                     Your desired result. In other words, if the coin agrees, you will:
                     <br/>
-                    <input type='text' name='desired-decision' value={preferredDecision} placeholder='Enter result' onChange={e => setPreferredDecision(e.target.value)}></input>
+                    <input type='text' name='desired-decision' value={coinChoices.preferredDecision} placeholder='Enter result' onChange={e => setCoinChoices({preferredDecision: e.target.value})}></input>
                     <br/>
                     The other result. If the coin doesn't agree, you will:
                     <br/>
-                    <input type='text' name='other-decision' value={otherDecision} placeholder='Enter result' onChange={e => setOtherDecision(e.target.value)}></input>
+                    <input type='text' name='other-decision' value={coinChoices.otherDecision} placeholder='Enter result' onChange={e => setCoinChoices({otherDecision: e.target.value})}></input>
                 </div>
 
                 <div>(Click choice to toggle.)</div>
@@ -207,17 +212,17 @@ const FlipACoin = () => {
                 <div value='Tails' className={(coinChoices.currentChoice === 'Tails') ? 'selected' : ''} onClick={e => setCoinChoices({currentChoice: 'Tails'})}>Tails</div>
                 <button onClick={e => flipTheCoin()}>Flip the coin!</button>
                 <br/>
-                {criteriaStatus}
+                {coinChoices.criteriaStatus}
             </div>
 
             {/* This is the result. This will be hidden until the coin is flipped. */}
-            <div className={(flipStatus === 'notFlipped') ? 'hidden' : 'visible'}>
+            <div className={(coinChoices.flipStatus === 'notFlipped') ? 'hidden' : 'visible'}>
                 <h2>Flip results:</h2>
                 Your choice is: {coinChoices.currentChoice}
                 <br/>
                 The result is: {coinChoices.flipResult}
                 <br/>
-                {resultStatus}
+                {setCoinChoices.resultStatus}
                 <br/>
                 <button onClick={e => resetTheGame()}>Set up another flip.</button>
             </div>
