@@ -104,6 +104,8 @@ const FlipACoin = () => {
                 <br/>
                 The other result. If the coin doesn't agree, you will:
                 <br/>
+                <input type='text' name='other-decision' value={otherDecision} placeholder='Enter other result' onChange={e => setOtherDecision(e.target.value)}></input>
+                <br/>
             </div>
             <CoinChoices />
 
