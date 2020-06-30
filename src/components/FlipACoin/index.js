@@ -19,6 +19,8 @@ const FlipACoin = () => {
     const [flipStatus, setFlipStatus] = useState('notFlipped');
     // This will inform the user that they have to fill selection criteria before they can flip.
     const [criteriaStatus, setCriteriaStatus] = useState('');
+    // This wil decide if the user wants to fill selection criteria
+    const [useCriteriaForResults, setUseCriteriaForResults] = useState(false)
 
     // This will decide the result of the coin flip: heads or tails
     const coinDecision = () => {
@@ -97,7 +99,8 @@ const FlipACoin = () => {
             <br/>
             All you have to do is enter the decision you'd like, and choose whether it happens on heads or tails. Let fate do the rest.
             <hr/>
-            <div>
+            { (useCriteriaForResults) ?
+                <div>
                 Your desired result. In other words, if the coin agrees, you will:
                 <br/>
                 <input type='text' name='desired-decision' value={preferredDecision} placeholder='Enter result' onChange={e => setPreferredDecision(e.target.value)}></input>
@@ -107,6 +110,8 @@ const FlipACoin = () => {
                 <input type='text' name='other-decision' value={otherDecision} placeholder='Enter other result' onChange={e => setOtherDecision(e.target.value)}></input>
                 <br/>
             </div>
+            : null
+            }
             <CoinChoices />
 
             {/* This is the selection criteria. It will be hidden once the coin is flipped, until a new game is started. */}
