@@ -42,7 +42,7 @@ const FlipACoin = () => {
 
     // This is the coin flip.
     const flipTheCoin = () => {
-        if ((preferredDecision === '') || (otherDecision === '')) {
+        if ((useCriteriaForResults) && ((preferredDecision === '') || (otherDecision === ''))) {
             setCriteriaStatus('Please set the requirements.');
         } else {
             let flippedCoin = coinDecision();
@@ -70,23 +70,12 @@ const FlipACoin = () => {
     const CoinChoices = () => {
         return (
             <div>
-                {/* <div className={(flipStatus === 'notFlipped') ? 'visible' : 'hidden'} > */}
-                    {/* <div>
-                        Your desired result. In other words, if the coin agrees, you will:
-                        <br/>
-                        <input type='text' name='desired-decision' value={preferredDecision} placeholder='Enter result' onChange={e => setPreferredDecision(...e.target.value)}></input>
-                        <br/>
-                        The other result. If the coin doesn't agree, you will:
-                        <br/>
-                    </div> */}
-    
-                    <div>(Click choice to toggle.)</div>
-                    <div value='Heads' className={(currentChoice === 'Heads') ? 'selected' : ''} onClick={e => setCurrentChoice('Heads')}>Heads</div>
-                    <div value='Tails' className={(currentChoice === 'Tails') ? 'selected' : ''} onClick={e => setCurrentChoice('Tails')}>Tails</div>
-                    <button onClick={e => flipTheCoin()}>Flip the coin!</button>
-                    <br/>
-                    {criteriaStatus}
-                {/* </div>             */}
+                <div>(Click choice to toggle.)</div>
+                <div value='Heads' className={(currentChoice === 'Heads') ? 'selected' : ''} onClick={e => setCurrentChoice('Heads')}>Heads</div>
+                <div value='Tails' className={(currentChoice === 'Tails') ? 'selected' : ''} onClick={e => setCurrentChoice('Tails')}>Tails</div>
+                <button onClick={e => flipTheCoin()}>Flip the coin!</button>
+                <br/>
+                {criteriaStatus}
             </div>
         )
     }
@@ -99,6 +88,8 @@ const FlipACoin = () => {
             <br/>
             All you have to do is enter the decision you'd like, and choose whether it happens on heads or tails. Let fate do the rest.
             <hr/>
+
+            {/* This section contains the inputs if the user wants to select outcomes. */}
             { (useCriteriaForResults) ?
                 <div>
                 Your desired result. In other words, if the coin agrees, you will:
@@ -110,7 +101,8 @@ const FlipACoin = () => {
                 <input type='text' name='other-decision' value={otherDecision} placeholder='Enter other result' onChange={e => setOtherDecision(e.target.value)}></input>
                 <br/>
             </div>
-            : null
+            : 
+            <div></div>
             }
             <CoinChoices />
 
