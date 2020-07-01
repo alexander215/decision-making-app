@@ -77,10 +77,6 @@ const FlipACoin = () => {
       </div>
     )
   }
-
-  const toggleResultConditions = () => {
-    setUseCriteriaForResults(!useCriteriaForResults)
-  }
     
   return (
     <div>
@@ -91,7 +87,7 @@ const FlipACoin = () => {
       <hr/>
 
       {/* This section contains the inputs if the user wants to select outcomes. */}
-      <button onClick={() => toggleResultConditions()}>Use conditions for the results.</button>
+      <button onClick={() => setUseCriteriaForResults(!useCriteriaForResults)}>Use conditions for the results.</button>
       { (useCriteriaForResults) ?
         <div>
         Your desired result. In other words, if the coin agrees, you will:
