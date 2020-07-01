@@ -4,23 +4,23 @@ import * as ROUTES from '../../constants/routes';
 
 
 class DecisionList extends Component {
-    state = {
-        user: ''
-    }
+  state = {
+    user: ''
+  }
 
-    render(){
-        return(
-            <div>
-                This is the decision list.
-                <li><Link to={ROUTES.RANDOM_NUMBER}>Random Number</Link></li>
-                <li><Link to={ROUTES.ROCK_PAPER_SCISSORS}>Rock, Paper, Scissors</Link></li>
-                <li><Link to={ROUTES.FLIP_A_COIN}>Flip a Coin</Link></li>
-                <li><Link to={ROUTES.EVEN_OR_ODD}>Even or Odd</Link></li>
+  render(){
+    return(
+      <div>
+        This is the decision list.
+        <li><Link to={ROUTES.RANDOM_NUMBER}>Random Number</Link></li>
+        <li><Link to={ROUTES.ROCK_PAPER_SCISSORS}>Rock, Paper, Scissors</Link></li>
+        <li><Link to={ROUTES.FLIP_A_COIN}>Flip a Coin</Link></li>
+        <li><Link to={ROUTES.EVEN_OR_ODD}>Even or Odd</Link></li>
 
 
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
 export default DecisionList;
