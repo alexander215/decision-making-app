@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import { render } from 'react-dom';
 
 
@@ -77,6 +77,10 @@ const FlipACoin = () => {
       </div>
     )
   }
+
+  const toggleResultConditions = () => {
+    setUseCriteriaForResults(!useCriteriaForResults)
+  }
     
   return (
     <div>
@@ -87,6 +91,7 @@ const FlipACoin = () => {
       <hr/>
 
       {/* This section contains the inputs if the user wants to select outcomes. */}
+      <button onClick={() => toggleResultConditions()}>Use conditions for the results.</button>
       { (useCriteriaForResults) ?
         <div>
         Your desired result. In other words, if the coin agrees, you will:
