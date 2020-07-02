@@ -65,6 +65,7 @@ const FlipACoin = () => {
     console.log(preferredDecision, 'preferd dec')
   }
 
+  // This is the onClick handler for choosing a coin. It only allows the user to choose if the coins haven't been flipped
   const flipBlocker = (chosenSide) => {
     if (flipStatus === 'notFlipped'){
       setCurrentChoice(chosenSide)
@@ -77,8 +78,6 @@ const FlipACoin = () => {
         <div>(Click choice to toggle.)</div>
         <div value='Heads' className={(currentChoice === 'Heads') ? 'selected' : ''} onClick={e => flipBlocker('Heads')}>Heads</div>
         <div value='Tails' className={(currentChoice === 'Tails') ? 'selected' : ''} onClick={e => flipBlocker('Tails')}>Tails</div>
-        {/* <div value='Heads' className={(currentChoice === 'Heads') ? 'selected' : ''} onClick={e => setCurrentChoice('Heads')}>Heads</div>
-        <div value='Tails' className={(currentChoice === 'Tails') ? 'selected' : ''} onClick={e => setCurrentChoice('Tails')}>Tails</div> */}
         <button onClick={e => flipTheCoin()}>Flip the coin!</button>
         <br/>
         {criteriaStatus}
