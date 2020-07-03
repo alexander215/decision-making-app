@@ -33,10 +33,19 @@ const FlipACoin = () => {
 
   // This calculates whether the user won the flip, an sends the message about when they need to do.
   const flipWinner = (flipWinner) => {
-    if (flipWinner === currentChoice) {
-      setResultStatus(`Yes!!!! You should ${preferredDecision}.`)
+    if (useCriteriaForResults) {
+      if (flipWinner === currentChoice) {
+        setResultStatus(`Good guess with ${flipWinner}! You should ${preferredDecision}.`)
+      } else {
+        setResultStatus(`Poor luck, the coin came up ${flipWinner} You should ${otherDecision}`)
+      }
     } else {
-      setResultStatus(`No!!! You should ${otherDecision}`)
+        if (flipWinner === currentChoice) {
+          setResultStatus(`Good guess, it was ${flipWinner}!`)
+        } else {
+          setResultStatus(`Poor luck, you flipped ${flipWinner}.`)
+        }
+
     }
   }
 
