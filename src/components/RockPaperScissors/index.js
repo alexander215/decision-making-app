@@ -35,11 +35,14 @@ const RockPaperScissors = () => {
     // e.preventDefault();
     let opponentsDecision = opponentDecision();
     setWinnerStatus("Calculating...");
+    setGameStarted(true)
     calculateWinner(opponentsDecision);
   };
 
   const choiceSelection = (choice) => {
-    setCurrentChoice(choice)
+    if (!gameStarted){
+      setCurrentChoice(choice)
+    }
   }
 
   return (
