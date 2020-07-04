@@ -5,6 +5,7 @@ const RockPaperScissors = () => {
   const [currentChoice, setCurrentChoice] = useState('Rock');
   const [opponentChoice, setOpponentChoice] = useState('?');
   const [winnerStatus, setWinnerStatus] = useState('');
+  const [gameStarted, setGameStarted] = useState(false);
   
   // The win logic. It gets called from playRockPaperScissors().
   const calculateWinner = (opponentsDecision) => {
