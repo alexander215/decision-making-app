@@ -37,6 +37,10 @@ const RockPaperScissors = () => {
     calculateWinner(opponentsDecision);
   };
 
+  const choiceSelection = (choice) => {
+    setCurrentChoice(choice)
+  }
+
   return (
     <div>
       <h1>Rock, Paper, Scissors</h1>
@@ -45,14 +49,14 @@ const RockPaperScissors = () => {
       No one knows why a rock gives up when it's covered by a piece of paper, but that's neither here nor there.
       <hr/>
       <div>(Click choice to toggle)</div>
-      <div value='Rock' className={(currentChoice === 'Rock') ? 'selected' : ''} onClick={e => setCurrentChoice('Rock')}>
+      <div value='Rock' className={(currentChoice === 'Rock') ? 'selected' : ''} onClick={e => choiceSelection('Rock')}>
 
         Rock.
       </div>
-      <div value='Paper' className={(currentChoice === 'Paper') ? 'selected' : ''} onClick={e => setCurrentChoice('Paper')}>
+      <div value='Paper' className={(currentChoice === 'Paper') ? 'selected' : ''} onClick={e => choiceSelection('Paper')}>
         Paper.
       </div>
-      <div value='Scissors' className={(currentChoice === 'Scissors') ? 'selected' : ''} onClick={e => setCurrentChoice('Scissors')}>
+      <div value='Scissors' className={(currentChoice === 'Scissors') ? 'selected' : ''} onClick={e => choiceSelection('Scissors')}>
         Scissors.
       </div>
       <button onClick={e => playRockPaperScissors(e)}>Rock, Paper, Scissors!</button>
