@@ -64,7 +64,7 @@ const RockPaperScissors = () => {
       <div value='Scissors' className={(currentChoice === 'Scissors') ? 'selected' : ''} onClick={e => choiceSelection('Scissors')}>
         Scissors.
       </div> */}
-      <RockPaperScissorsSelectContainer currentChoice={currentChoice} choiceSelection={(e) => {choiceSelection()}} />
+      <RockPaperScissorsSelectContainer currentChoice={currentChoice} choiceSelection={(choice) => {choiceSelection(choice)}} />
       <button onClick={e => playRockPaperScissors(e)}>Rock, Paper, Scissors!</button>
 
       <h2>The Results:</h2>
