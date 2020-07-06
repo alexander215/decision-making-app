@@ -46,6 +46,10 @@ const RockPaperScissors = () => {
     }
   }
 
+  // This toggles the button on the game message
+  let gameButtonMessage = 'Rock, Paper, Scissors!'
+  if (gameStarted) { gameButtonMessage = 'Play again.'}
+
   return (
     <div>
       <h1>Rock, Paper, Scissors</h1>
@@ -58,7 +62,7 @@ const RockPaperScissors = () => {
         :
         null
       }
-      <button onClick={e => playRockPaperScissors(e)}>Rock, Paper, Scissors!</button>
+      <button onClick={e => playRockPaperScissors(e)}>{gameButtonMessage}</button>
 
       <h2>The Results:</h2>
       Your choice is: {currentChoice}
