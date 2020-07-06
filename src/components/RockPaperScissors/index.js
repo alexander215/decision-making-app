@@ -53,18 +53,11 @@ const RockPaperScissors = () => {
       Rock breaks scissors, scissors cut paper, and paper covers rock. It's a vicious circle.
       No one knows why a rock gives up when it's covered by a piece of paper, but that's neither here nor there.
       <hr/>
-      {/* <div>(Click choice to toggle)</div>
-      <div value='Rock' className={(currentChoice === 'Rock') ? 'selected' : ''} onClick={e => choiceSelection('Rock')}>
-
-        Rock.
-      </div>
-      <div value='Paper' className={(currentChoice === 'Paper') ? 'selected' : ''} onClick={e => choiceSelection('Paper')}>
-        Paper.
-      </div>
-      <div value='Scissors' className={(currentChoice === 'Scissors') ? 'selected' : ''} onClick={e => choiceSelection('Scissors')}>
-        Scissors.
-      </div> */}
-      <RockPaperScissorsSelectContainer currentChoice={currentChoice} choiceSelection={(choice) => {choiceSelection(choice)}} />
+      { (!gameStarted) ? 
+        <RockPaperScissorsSelectContainer currentChoice={currentChoice} choiceSelection={(choice) => {choiceSelection(choice)}} />
+        :
+        null
+      }
       <button onClick={e => playRockPaperScissors(e)}>Rock, Paper, Scissors!</button>
 
       <h2>The Results:</h2>
