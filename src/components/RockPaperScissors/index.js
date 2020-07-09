@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { async } from 'q';
 import RockPaperScissorsSelectContainer from './RockPaperScissorsSelectContainer';
+import ResultsContainer from './ResultsContainer';
 
 const RockPaperScissors = () => {
   const [currentChoice, setCurrentChoice] = useState('Rock');
@@ -64,13 +65,13 @@ const RockPaperScissors = () => {
       }
       <button onClick={e => playRockPaperScissors(e)}>{gameButtonMessage}</button>
 
-      <h2>The Results:</h2>
+      {/* <h2>The Results:</h2>
       Your choice is: {currentChoice}
       <br/>
       Your opponent's choice is: {opponentChoice}
       <br/>
-      {winnerStatus}
-        
+      {winnerStatus} */}
+        <ResultsContainer currentChoice={currentChoice} opponentChoice={opponentChoice} winnerStatus={winnerStatus} />
 
     </div>
   )
