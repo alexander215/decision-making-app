@@ -63,11 +63,7 @@ const RockPaperScissors = () => {
       Rock breaks scissors, scissors cut paper, and paper covers rock. It's a vicious circle.
       No one knows why a rock gives up when it's covered by a piece of paper, but that's neither here nor there.
       <hr/>
-      { (!gameStarted) ? 
-        <RockPaperScissorsSelectContainer currentChoice={currentChoice} choiceSelection={(choice) => {choiceSelection(choice)}} />
-        :
-        null
-      }
+      { !gameStarted && <RockPaperScissorsSelectContainer currentChoice={currentChoice} choiceSelection={(choice) => {choiceSelection(choice)}} />}
       <button onClick={e => playRockPaperScissors(e)}>{gameButtonMessage}</button>
 
       {/* <h2>The Results:</h2>
@@ -76,7 +72,9 @@ const RockPaperScissors = () => {
       Your opponent's choice is: {opponentChoice}
       <br/>
       {winnerStatus} */}
-        <ResultsContainer currentChoice={currentChoice} opponentChoice={opponentChoice} winnerStatus={winnerStatus} />
+
+      {gameStarted && <ResultsContainer currentChoice={currentChoice} opponentChoice={opponentChoice} winnerStatus={winnerStatus} />}
+      {/* <ResultsContainer currentChoice={currentChoice} opponentChoice={opponentChoice} winnerStatus={winnerStatus} /> */}
 
     </div>
   )
