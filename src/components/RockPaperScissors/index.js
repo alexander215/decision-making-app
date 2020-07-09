@@ -35,10 +35,15 @@ const RockPaperScissors = () => {
   // This is the game play. It gets activated when the play button is clicked.
   const playRockPaperScissors = (e) => {
     // e.preventDefault();
-    let opponentsDecision = opponentDecision();
-    setWinnerStatus("Calculating...");
-    setGameStarted(true)
-    calculateWinner(opponentsDecision);
+    if (gameStarted) {
+      setGameStarted(false);
+
+    } else {
+      let opponentsDecision = opponentDecision();
+      setWinnerStatus("Calculating...");
+      setGameStarted(true)
+      calculateWinner(opponentsDecision);
+    }
   };
 
   const choiceSelection = (choice) => {
