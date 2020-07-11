@@ -8,6 +8,7 @@ import * as ROUTES from '../../constants/routes';
 import RockPaperScissors from '../RockPaperScissors';
 import FlipACoin from '../FlipACoin';
 import EvenOrOdd from '../EvenOrOdd';
+import NavBar from '../NavBar';
 
 
 const Error404Message = () => {
@@ -22,6 +23,7 @@ const Error404Message = () => {
 function App() {
   return (
     <div>
+      <NavBar /> 
       <Switch>
         <Route exact path={ROUTES.LANDING_PAGE} component={IntroSection} />
         <Route exact path={ROUTES.DECISIONS_LIST} component={DecisionList} />
