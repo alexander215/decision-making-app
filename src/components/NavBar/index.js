@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
+
 
 const index = () => {
   return (
     <div>
-      Navbar
+      <Link to={ROUTES.LANDING_PAGE}>Home</Link>
     </div>
   )
 }
