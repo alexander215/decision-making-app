@@ -1,5 +1,6 @@
 import React, { useState, createContext } from 'react';
 import { render } from 'react-dom';
+import FlipCriteria from './FlipCriteria';
 
 
 
@@ -105,16 +106,17 @@ const FlipACoin = () => {
       {/* This section contains the inputs if the user wants to select outcomes. */}
       <button onClick={() => setUseCriteriaForResults(!useCriteriaForResults)}>Use conditions for the results.</button>
       { (useCriteriaForResults) ?
-        <div>
-        Your desired result. In other words, if the coin agrees, you will:
-        <br/>
-        <input type='text' name='desired-decision' value={preferredDecision} placeholder='Enter result' onChange={e => setPreferredDecision(e.target.value)}></input>
-        <br/>
-        The other result. If the coin doesn't agree, you will:
-        <br/>
-        <input type='text' name='other-decision' value={otherDecision} placeholder='Enter other result' onChange={e => setOtherDecision(e.target.value)}></input>
-        <br/>
-      </div>
+      <FlipCriteria preferredDecision={preferredDecision} otherDecision={otherDecision} preferredChange={e => setPreferredDecision(e.target.value)} otherChange={e => setOtherDecision(e.target.value)}/>
+      //   <div>
+      //   Your desired result. In other words, if the coin agrees, you will:
+      //   <br/>
+      //   <input type='text' name='desired-decision' value={preferredDecision} placeholder='Enter result' onChange={e => setPreferredDecision(e.target.value)}></input>
+      //   <br/>
+      //   The other result. If the coin doesn't agree, you will:
+      //   <br/>
+      //   <input type='text' name='other-decision' value={otherDecision} placeholder='Enter other result' onChange={e => setOtherDecision(e.target.value)}></input>
+      //   <br/>
+      // </div>
       : 
       <div></div>
       }
